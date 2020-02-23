@@ -1,9 +1,7 @@
 from datetime import datetime
-from django.utils import timezone
 from django.db import models
 from medico.models import Medico
 # Create your models here.
-
 
 class Agenda(models.Model):
 
