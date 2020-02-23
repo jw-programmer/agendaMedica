@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import MedicoSerializer, Medico
+from .filters import MedicoFilter
 
-# Create your views here.
+
+class MedicoViewset(viewsets.ReadOnlyModelViewSet):
+    queryset = Medico.objects.all()
+    serializer_class = MedicoSerializer
+    filterset_class = MedicoFilter

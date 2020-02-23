@@ -12,6 +12,7 @@ pylint-django = "*"
 [packages]
 django = "==2.2"
 djangorestframework = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7"
