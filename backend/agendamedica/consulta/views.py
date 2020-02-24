@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from datetime import datetime
+from rest_framework import viewsets
+from .serializers import ConsultaSerializer, Consulta
 
-# Create your views here.
+
+class ConsultaViewset(viewsets.ModelViewSet):
+    queryset = Consulta.get_consultas_nao_realizadas()
+    serializer_class = ConsultaSerializer
+
+    def get_queryset(self):
+        if self.action == 'list':
+            return self.queryset.filter(usuario=self.request.user)
+        return self.queryset

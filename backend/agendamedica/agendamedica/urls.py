@@ -19,14 +19,14 @@ from rest_framework.routers import DefaultRouter
 
 from rest_framework_simplejwt import views as jwt_views
 
-from user.views import UserViewset
 from especialidade.views import EspecialidadeViewset
 from medico.views import MedicoViewset
+from consulta.views import ConsultaViewset
 
 router = DefaultRouter()
 router.register(r'especialidades', EspecialidadeViewset, 'especialidades')
 router.register(r'medicos', MedicoViewset, 'medicos')
-router.register(r'user', UserViewset, 'users')
+router.register(r'consultas', ConsultaViewset, 'consultas')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
