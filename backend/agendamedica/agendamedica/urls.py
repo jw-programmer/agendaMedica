@@ -17,14 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from rest_framework_simplejwt import views as jwt_views
+
+from user.views import UserViewset
 from especialidade.views import EspecialidadeViewset
 from medico.views import MedicoViewset
 
 router = DefaultRouter()
 router.register(r'especialidades', EspecialidadeViewset, 'especialidades')
-router.register(r'medicos', MedicoViewset,'medicos')
+router.register(r'medicos', MedicoViewset, 'medicos')
+router.register(r'user', UserViewset, 'users')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/login/', jwt_views.TokenObtainPairView.as_view(),
+         name='token_obtain_pair'),
+    path('api/token/refresh_token/', jwt_views.TokenRefreshView.as_view(),
+         name='token_refresh'),
 ]

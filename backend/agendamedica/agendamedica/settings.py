@@ -124,9 +124,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Para utilizar o django Filters
+# Configurações do rest framework
 REST_FRAMEWORK = {
+    # Backend padrão dos filtros. Se não teria de configurar explicitamente
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
+    # Para dizer que haverar autenticação jwt padrão
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+
 }

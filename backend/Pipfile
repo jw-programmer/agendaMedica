@@ -13,6 +13,7 @@ pylint-django = "*"
 django = "==2.2"
 djangorestframework = "*"
 django-filter = "*"
+djangorestframework-simplejwt = "*"
 
 [requires]
 python_version = "3.7"
