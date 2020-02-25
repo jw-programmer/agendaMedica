@@ -9,6 +9,7 @@ class Agenda(models.Model):
     medico = models.ForeignKey(Medico, on_delete=models.PROTECT)
     horario = models.DateTimeField()
 
+    @classmethod
     def marcar_no_passado(self, agenda_nova):
         return agenda_nova.horario.day < datetime.today().day
 
