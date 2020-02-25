@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .serializers import ConsultaSerializer, Consulta
 
 
-class ConsultaViewset(viewsets.ModelViewSet):
+class ConsultaViewset(viewsets.ReadOnlyModelViewSet):
     queryset = Consulta.get_consultas_nao_realizadas()
     serializer_class = ConsultaSerializer
 

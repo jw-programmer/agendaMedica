@@ -22,11 +22,13 @@ from rest_framework_simplejwt import views as jwt_views
 from especialidade.views import EspecialidadeViewset
 from medico.views import MedicoViewset
 from consulta.views import ConsultaViewset
+from agenda.views import AgendaViewset
 
 router = DefaultRouter()
 router.register(r'especialidades', EspecialidadeViewset, 'especialidades')
 router.register(r'medicos', MedicoViewset, 'medicos')
 router.register(r'consultas', ConsultaViewset, 'consultas')
+router.register(r'agendas', AgendaViewset, 'agendas')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

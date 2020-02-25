@@ -3,6 +3,7 @@ from django.db import models
 from medico.models import Medico
 # Create your models here.
 
+
 class Agenda(models.Model):
 
     medico = models.ForeignKey(Medico, on_delete=models.PROTECT)
@@ -15,6 +16,12 @@ class Agenda(models.Model):
         horarios = Agenda.objects.filter(
             medico=agenda_nova.medico).filter(horario=agenda_nova.horario)
         return horarios.exists()
+
+    @classmethod
+    def agendas_disponiveis(self):
+        agendas_livres = Agenda.objects.filter(
+            horario__gte=datetime.today()).filter(consulta__isnull=True)
+        return agendas_livres
 
     def save(self, *args, **kwargs):
         if not self.marcar_no_passado(self) and not self.marcar_repetido(self):

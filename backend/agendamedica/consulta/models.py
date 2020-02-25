@@ -8,7 +8,7 @@ class Consulta(models.Model):
 
     usuario = models.ForeignKey(User, on_delete=models.PROTECT)
     data_agendamento = models.DateTimeField(auto_now_add=True)
-    agenda = models.ForeignKey(Agenda, on_delete=models.PROTECT)
+    agenda = models.OneToOneField(Agenda, on_delete=models.PROTECT)
 
     @property
     def medico(self):
