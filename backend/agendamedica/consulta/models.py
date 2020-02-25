@@ -32,12 +32,27 @@ class Consulta(models.Model):
         agenda = Agenda.objects.get(id=agenda_id)
 
         try:
-            if not Agenda.marcar_no_passado and Consulta.objects.filter(agenda=agenda).exists():
+            if not Agenda.marcar_no_passado(agenda) and Consulta.objects.filter(agenda=agenda).exists():
                 nova_consulta = Consulta(usuario=user, agenda=agenda)
                 nova_consulta.save()
                 return nova_consulta
             else:
                 return "Você quer reservar um horário já ocupado"
+        except:
+            return None
+
+    @classmethod
+    def delete_consulta(self, user, id):
+        try:
+            consulta = Consulta.objects.get(id=id)
+        except Consulta.DoesNotExist:
+            raise Consulta.DoesNotExist
+        try:
+            if not Agenda.marcar_no_passado(consulta.agenda) and consulta.usuario.id == user.id:
+                consulta.delete()
+                return "Consulta apagada"
+            else:
+                return "Você quer desmarcar uma consulta que já ocorreu ou não foi marcada por você"
         except:
             return None
 
