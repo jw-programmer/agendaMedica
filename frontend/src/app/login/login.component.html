@@ -1,15 +1,21 @@
-<div mat-app-background fxLayout="column" fxLayoutAlign="space-evenly space-between" style="background-color: black;">
-    <img src="/assets/logo.png" alt="Logo do software"/>
-    <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input matInput placeholder="Seu usuário" />
-    </mat-form-field>
-    <mat-form-field appearance="outline" >
-        <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Senha" />
-    </mat-form-field>
-    <div fxLayout="row" fxLayoutAlign="space-evenly">
-        <button mat-raised-button color="accent">Registre-se</button>
-        <button mat-raised-button color="primary">Entre</button>
+<div class="p-grid">
+    <div class="p-col-12">
+        <img src="assets/logo.png" alt="Logo do medicar">
+    </div>
+    <div class="p-col-12">
+        <span class="ui-float-label">
+            <input id="username" type="text" pInputText />
+            <label for="username">Username</label>
+        </span>
+    </div>
+    <div class="p-col-12">
+        <span class="ui-float-label">
+            <input pPassword id="password" type="password" promptLabel="Por favor digite a senha" />
+            <label for="username">Senha</label>
+        </span>
+    </div>
+    <div class="p-col">
+        <button pButton class="ui-button-success" type="button" style="margin-top: 10px;" (click)="logar()">Logar</button>
+        <button pButton class="ui-button-info" type="button" style="margin-top: 10px;" (click)="cadrastrar()">Cadastra-se</button>
     </div>
 </div>

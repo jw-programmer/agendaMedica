@@ -12,4 +12,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cadrastrar(): void{
+    console.log("Quero me cadrastar")
+  }
+
+  logar() : void{
+    console.log("Quero me logar")
+  }
+
 }
