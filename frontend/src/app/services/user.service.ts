@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_CONFIG } from '../config/api_config';
+import { API_CONFIG } from '../config/api-config';
 import { CredenciaisDTO } from '../models/credenciais.dto';
 
 @Injectable({

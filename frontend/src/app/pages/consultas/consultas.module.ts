@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {ToolbarModule} from 'primeng/toolbar';
+import {ButtonModule} from 'primeng/button';
+
 import { ConsultasRoutingModule } from './consultas-routing.module';
 import { ConsultasComponent } from './consultas.component';
 
@@ -9,7 +12,9 @@ import { ConsultasComponent } from './consultas.component';
   declarations: [ConsultasComponent],
   imports: [
     CommonModule,
-    ConsultasRoutingModule
+    ConsultasRoutingModule,
+    ButtonModule,
+    ToolbarModule,
   ]
 })
 export class ConsultasModule { }
