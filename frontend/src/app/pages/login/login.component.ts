@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { JwtService } from '../../services/jwt.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +18,22 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private jwtService: JwtService,
+    private userService: UserService,
+    private store: StoreService,
     private router: Router) { }
 
   ngOnInit(): void {
   }
 
   cadrastrar(): void {
-    console.log("Quero me cadrastar")
+    // let localUser = this.store.getLocalUser()
+    // console.log(localUser['claims']['user_id'])
+    this.userService.createUser(this.cred).subscribe(response => {
+      this.logar()
+    },
+    error => {
+      alert("Erro durante a criação do usuário")
+    })
   }
 
   logar(): void {

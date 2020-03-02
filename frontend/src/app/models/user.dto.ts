@@ -1,5 +1,5 @@
 export interface UserDTO {
     access: String,
     refresh: String,
-    username: String,
+    claims: String,
 }

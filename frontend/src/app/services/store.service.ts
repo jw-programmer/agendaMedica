@@ -12,7 +12,7 @@ export class StoreService {
     if (user == null) {
       return null
     } else {
-      return user
+      return JSON.parse(user)
     }
   }
 

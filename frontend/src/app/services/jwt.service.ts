@@ -27,7 +27,7 @@ export class JwtService {
     let user: UserDTO = {
       access: tokens['access'],
       refresh: tokens['refresh'],
-      username: this.jwtHelper.decodeToken(tokens['access'])
+      claims: this.jwtHelper.decodeToken(tokens['access'])
     }
     this.store.setLocalUser(user)
   }
