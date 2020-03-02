@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     this.userService.createUser(this.cred).subscribe(response => {
       this.logar()
     },
-    error => {
-      alert("Erro durante a criação do usuário")
-    })
+      error => {
+        alert("Erro durante a criação do usuário")
+      })
   }
 
   logar(): void {
@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
       this.jwtService.loginSucesso(response.body)
       this.router.navigate(['consulta'])
     },
-    error => {
-      alert("Erro ao se conectar")
-    })
+      error => {
+        alert("Erro ao se conectar")
+      })
   }
 
 }
