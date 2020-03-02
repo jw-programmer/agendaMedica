@@ -17,4 +17,8 @@ export class UserService {
         responseType: "text"
       })
   }
+
+  getUserById(id: number) {
+    return this.http.get(`${API_CONFIG.baseUrl}user/${id}/`);
+  }
 }
