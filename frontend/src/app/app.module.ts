@@ -3,8 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http'
 import { NgModule } from '@angular/core';
 
-import {InputTextModule} from 'primeng/inputtext';
-
+import {JwtInterceptorProvider} from './interceptors/jwt.interceptor'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -17,9 +16,10 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    InputTextModule
   ],
-  providers: [],
+  providers: [
+    JwtInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

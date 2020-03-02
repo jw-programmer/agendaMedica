@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CredenciaisDTO } from '../models/credenciais.dto';
-import { API_CONFIG } from '../config/api_config';
+import { API_CONFIG } from '../config/api-config';
 import { UserDTO } from '../models/user.dto';
 import { StoreService } from './store.service';
 
