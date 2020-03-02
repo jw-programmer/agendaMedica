@@ -3,7 +3,8 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StoreService } from '../services/store.service';
@@ -27,4 +28,10 @@ export class JwtInterceptor implements HttpInterceptor {
 
     return next.handle(request);
   }
+}
+
+export const JwtInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: JwtInterceptor,
+  multi: true
 }
