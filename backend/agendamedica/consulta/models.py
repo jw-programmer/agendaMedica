@@ -32,7 +32,7 @@ class Consulta(models.Model):
         agenda = Agenda.objects.get(id=agenda_id)
 
         try:
-            if not Agenda.marcar_no_passado(agenda) and Consulta.objects.filter(agenda=agenda).exists():
+            if not Agenda.marcar_no_passado(agenda) and not Consulta.objects.filter(agenda=agenda).exists():
                 nova_consulta = Consulta(usuario=user, agenda=agenda)
                 nova_consulta.save()
                 return nova_consulta

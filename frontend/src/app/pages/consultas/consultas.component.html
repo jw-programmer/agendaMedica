@@ -16,7 +16,8 @@
         </h2>
     </div>
     <div class="p-col-2">
-        <button pButton class="ui-button-info" icon="pi pi-plus" type="button" label="Nova consulta"></button>
+        <button pButton class="ui-button-info" icon="pi pi-plus" 
+        type="button" label="Nova consulta" (click)="openNewConsulta()"></button>
     </div>
 </div>
 <p-table [value]="consultas" [responsive]=true>
