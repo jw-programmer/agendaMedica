@@ -1,1 +1,23 @@
-<p>new-consulta-dialog works!</p>
+<div class="ui-fluid p-grid p-justify-between">
+    <H3>Nova Consulta</H3>
+    <div class="p-col-12">
+        <p-dropdown [options]="especialidades" [(ngModel)]="especidade" 
+        optionLabel="Especidade" placeholder=" Selecione a especialidade"></p-dropdown>
+    </div>
+    <div class="p-col-12">
+        <p-dropdown class="espacamento" [options]="medicos" [(ngModel)]="medico"
+        optionLabel="Medico" placeholder="Escolha o médico"></p-dropdown>
+    </div>
+    <div class="p-col-12">
+        <p-dropdown class="espacamento" [options]="agendas" [(ngModel)]="agenda"
+        optionLabel="Horário" placeholder="Escolha um horário"></p-dropdown>
+    </div>
+</div>
+<div class="ui-fluid p-grid p-justify-between">
+    <div class="p-col-4">
+        <button pButton label="Cancelar operacao" class="ui-button-danger"></button>
+    </div>
+    <div class="p-col-4">
+        <button pButton label="Marcar consulta" class="ui-button-success"></button>
+    </div>
+</div>

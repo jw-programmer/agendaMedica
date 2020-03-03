@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import {DropdownModule} from 'primeng/dropdown';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 import { ConsultasRoutingModule } from './consultas-routing.module';
@@ -16,9 +18,11 @@ import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-d
   imports: [
     CommonModule,
     ConsultasRoutingModule,
+    FormsModule,
     ButtonModule,
     ToolbarModule,
     TableModule,
+    DropdownModule,
     DynamicDialogModule
   ],
   entryComponents:[
