@@ -1,3 +1,9 @@
+import { MedicoDTO } from './medico.dto';
+
 export interface ConsultaDTO{
-    // TODO: Verificar como é repassado para poder implantar
+    id: Number,
+    dia: String,
+    horario: String,
+    data_agendamento: Date,
+    medico: MedicoDTO
 }

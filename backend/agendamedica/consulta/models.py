@@ -16,7 +16,7 @@ class Consulta(models.Model):
 
     @property
     def dia(self):
-        return self.agenda.horario.strftime("%m-%d-%Y")
+        return self.agenda.horario.strftime("%d/%m/%Y")
 
     @property
     def horario(self):
