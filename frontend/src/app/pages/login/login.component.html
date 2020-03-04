@@ -1,0 +1,24 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <img src="assets/logo.png" alt="Logo do medicar">
+    </div>
+    <div class="p-col-12">
+        <span class="ui-float-label">
+            <input [(ngModel)]="cred.username" id="username" type="text" pInputText />
+            <label for="username">Username</label>
+        </span>
+    </div>
+    <div class="p-col-12">
+        <span class="ui-float-label">
+            <input [(ngModel)]="cred.password" pPassword id="password" type="password"
+                promptLabel="Por favor digite a senha" />
+            <label for="username">Senha</label>
+        </span>
+    </div>
+    <div class="p-col">
+        <button pButton class="ui-button-success" type="button" style="margin-top: 10px;"
+            (click)="logar()" label="Logar"></button>
+        <button pButton class="ui-button-info" type="button" style="margin-top: 10px;"
+            (click)="cadrastrar()" label="Cadastra-se"></button>
+    </div>
+</div>

@@ -2,13 +2,13 @@
 
 ## Sobre o projeto
 
-Este projeto é um estudo de caso/prova de conceito de uma simulação de agendamento médico. O backend será feito em djangorest e o frontend em Vue.js
+Este projeto é um estudo de caso/prova de conceito de uma simulação de agendamento médico. O backend será feito em Django Rest e o frontend em Angular
 
 ## Instruções para subir o backend
 
 ### Pipenv
 
-Paera controlar as dependencias deste projeto, utilizei o [pipenv](https://pipenv-fork.readthedocs.io/en/latest/). Este é um gerenciador de pacotes python que utiliza pip, porém têm mais qualidades, já criar o virtualenv e faz buyilds deterministicos.
+Paera controlar as dependencias deste projeto, utilizei o [pipenv](https://pipenv-fork.readthedocs.io/en/latest/). Este é um gerenciador de pacotes python que utiliza pip, porém têm mais qualidades, já cria o virtualenv e faz builds deterministicos.
 
 Para instala-lo, você deve seguir os seguintes passos:
 
@@ -17,7 +17,7 @@ Para instala-lo, você deve seguir os seguintes passos:
 ```bash
 pip install pipenv
 ```
-**Atenção** A não ser que configurado previamente, o ubuntu ainda utiliza por padrão o python2. o pipenv só é compativel com o python 3. Logo, talvez  você precise executar esse comando:
+**Atenção** A não ser que configurado previamente, o ubuntu ainda utiliza por padrão o python 2. o pipenv só é compativel com o python 3. Logo, talvez  você precise executar esse comando:
 
 ```bash
 pip3 install pipenv
@@ -66,7 +66,7 @@ uma vez dentro do virtualenv, use o comando para entrar na pasta do projeto djan
 cd agendamedica
 ```
 
-Eu sei que o ideal é utilizar um arquivo .env ou similar para configurar coisas sensiveis, como o degub, secret key, validade de tokens, etc... Mas pelo bem da simplicidade, não fiz essas configurações.
+Eu sei que o ideal é utilizar um arquivo .env ou similar para configurar coisas sensiveis, como o debug, secret key, validade de tokens, etc... Mas pelo bem da simplicidade, dado o fato que isto é uma demonstração, não fiz essas configurações.
 
 Execute as migrations:
 
@@ -74,7 +74,7 @@ Execute as migrations:
 Python manage.py migrate
 ```
 
-Crie um superuser(se quiser):
+Crie um superuser:
 
 
 ```
@@ -85,7 +85,31 @@ E suba o servidor:
 
 
 ```
-python manage.py runserver 8080
+python manage.py runserver
 ```
 
 Com isso o backend estará sendo executado em localhost:8080
+
+## Instruções para subir o frontend
+
+O front é feito em Angular, logo, estou partindo do suposto que você têm o NPM instalado na sua máquina. por ser um gerenciador mais popular, não vou dá maiores detalhes de como instala-lo.
+
+primeiro, instale o CLI do Angular:
+
+```
+npm install -g @angular/cli
+```
+
+feito isso, você precisa abrir seu terminal dentro da pasta /frontend. Depois, instale as dependencias do projeto:
+
+```
+npm install
+```
+
+Espera a instalação e quando terminar, suba o projeto:
+
+```
+ng serve --open
+```
+
+Com isso, o navegador será aberto para você, já ná página de login. Começe a testar

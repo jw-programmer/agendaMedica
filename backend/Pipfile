@@ -10,10 +10,11 @@ ipdb = "*"
 pylint-django = "*"
 
 [packages]
-django = "==2.2"
+django = "==2.2.10"
 djangorestframework = "*"
 django-filter = "*"
 djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"
