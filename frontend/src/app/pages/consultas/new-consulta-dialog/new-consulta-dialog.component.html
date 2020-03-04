@@ -1,0 +1,23 @@
+<div class="ui-fluid p-grid p-justify-between">
+    <H3>Nova Consulta</H3>
+    <div class="p-col-12">
+        <p-dropdown [options]="especialidades" [(ngModel)]="especidade" optionLabel="nome"
+            placeholder=" Selecione a especialidade" (onChange)="setMedicos()"></p-dropdown>
+    </div>
+    <div class="p-col-12">
+        <p-dropdown class="espacamento" [options]="medicos" [(ngModel)]="medico" optionLabel="nome"
+            placeholder="Escolha o médico" [disabled]="medicos.length == 0" (onChange)="setAgendas()"></p-dropdown>
+    </div>
+    <div class="p-col-12">
+        <p-dropdown class="espacamento" [options]="agendas" [(ngModel)]="agenda" optionLabel="horario"
+            placeholder="Escolha um horário" [disabled]="agendas.length == 0"></p-dropdown>
+    </div>
+</div>
+<div class="ui-fluid p-grid p-justify-between">
+    <div class="p-col-4">
+        <button pButton label="Cancelar operacao" class="ui-button-danger" (click)="closeConsulta()"></button>
+    </div>
+    <div class="p-col-4">
+        <button pButton label="Marcar consulta" class="ui-button-success" (click)="addConsulta()"></button>
+    </div>
+</div>

@@ -6,11 +6,14 @@ import { JwtService } from 'src/app/services/jwt.service';
 import { Router } from '@angular/router';
 import { ConsultaDTO } from 'src/app/models/consulta.dto';
 import { ConsultaService } from 'src/app/services/consulta.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-dialog.component';
 
 @Component({
   selector: 'app-consultas',
   templateUrl: './consultas.component.html',
-  styleUrls: ['./consultas.component.sass']
+  styleUrls: ['./consultas.component.sass'],
+  providers: [DialogService]
 })
 export class ConsultasComponent implements OnInit {
 
@@ -21,11 +24,24 @@ export class ConsultasComponent implements OnInit {
     private consultaService: ConsultaService,
     private store: StoreService,
     private jwt: JwtService,
+    private dialogService: DialogService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.setLoogedUser()
     this.setConsultas()
+  }
+
+  openNewConsulta() {
+    let dialogRef = this.dialogService.open(NewConsultaDialogComponent, {
+      header: "Selecione as opções",
+      width: '70%'
+    })
+    dialogRef.onClose.subscribe((consulta: any)=>{
+      if(consulta){
+        this.setConsultas()
+      }
+    })
   }
 
   setConsultas() {
