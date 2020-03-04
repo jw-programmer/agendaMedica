@@ -6,7 +6,7 @@ import { JwtService } from 'src/app/services/jwt.service';
 import { Router } from '@angular/router';
 import { ConsultaDTO } from 'src/app/models/consulta.dto';
 import { ConsultaService } from 'src/app/services/consulta.service';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService} from 'primeng/dynamicdialog';
 import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-dialog.component';
 import { MessageService } from 'primeng/api';
 
@@ -14,7 +14,7 @@ import { MessageService } from 'primeng/api';
   selector: 'app-consultas',
   templateUrl: './consultas.component.html',
   styleUrls: ['./consultas.component.sass'],
-  providers: [DialogService]
+  providers: [DialogService, MessageService]
 })
 export class ConsultasComponent implements OnInit {
 

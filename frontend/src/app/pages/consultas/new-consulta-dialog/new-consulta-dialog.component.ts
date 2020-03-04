@@ -13,7 +13,8 @@ import { ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'app-new-consulta-dialog',
   templateUrl: './new-consulta-dialog.component.html',
-  styleUrls: ['./new-consulta-dialog.component.sass']
+  styleUrls: ['./new-consulta-dialog.component.sass'],
+  providers: [ConfirmationService]
 })
 export class NewConsultaDialogComponent implements OnInit {
 
@@ -27,7 +28,7 @@ export class NewConsultaDialogComponent implements OnInit {
   agenda: AgendaDTO
 
   constructor(private ref: DynamicDialogRef,
-    private confirm: ConfirmationService
+    private confirm: ConfirmationService,
     private especilidadeService: EspecialidadeService,
     private medicoService: MedicoService,
     private agendaService: AgendaService,
