@@ -6,15 +6,16 @@ import { JwtService } from 'src/app/services/jwt.service';
 import { Router } from '@angular/router';
 import { ConsultaDTO } from 'src/app/models/consulta.dto';
 import { ConsultaService } from 'src/app/services/consulta.service';
-import { DialogService} from 'primeng/dynamicdialog';
+import { DialogService } from 'primeng/dynamicdialog';
 import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-dialog.component';
 import { MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-consultas',
   templateUrl: './consultas.component.html',
   styleUrls: ['./consultas.component.sass'],
-  providers: [DialogService, MessageService]
+  providers: [DialogService, ConfirmationService, MessageService]
 })
 export class ConsultasComponent implements OnInit {
 
@@ -27,6 +28,7 @@ export class ConsultasComponent implements OnInit {
     private jwt: JwtService,
     private dialogService: DialogService,
     private message: MessageService,
+    private confimService: ConfirmationService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -39,13 +41,29 @@ export class ConsultasComponent implements OnInit {
       header: "Selecione as opções",
       width: '70%'
     })
-    dialogRef.onClose.subscribe((consulta: any)=>{
-      if(consulta){
+    dialogRef.onClose.subscribe((consulta: any) => {
+      if (consulta) {
         this.setConsultas()
         this.message.add({
-          severity:"success",
+          severity: "success",
           summary: "Consulta marcada",
           detail: "Consulta marcada. Por favor, vá no dia e horário."
+        })
+      }
+    })
+  }
+
+  deleteConsulta(consulta: ConsultaDTO) {
+    this.confimService.confirm({
+      message: "Tem certeza que quer cancelar esta consulta?",
+      accept: () => {
+        this.consultaService.deleteConsulta(consulta.id).subscribe(response => {
+          this.setConsultas()
+          this.message.add({
+            severity: "warn",
+            summary: "Consulta desmarcada",
+            detail: "Consulta desmarcada"
+          })
         })
       }
     })
@@ -72,7 +90,7 @@ export class ConsultasComponent implements OnInit {
 
   logout() {
     this.jwt.logout()
-    this.router.navigate(['login'])
+    this.router.navigate([''])
   }
 
 }

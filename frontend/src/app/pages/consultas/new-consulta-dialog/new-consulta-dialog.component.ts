@@ -75,9 +75,6 @@ export class NewConsultaDialogComponent implements OnInit {
         })
       }
     })
-    // this.consultaService.addConsulta(nova_consulta).subscribe(response => {
-    //   this.ref.close(response)
-    // })
   }
 
   closeConsulta() {
