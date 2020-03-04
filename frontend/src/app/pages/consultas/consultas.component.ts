@@ -8,6 +8,7 @@ import { ConsultaDTO } from 'src/app/models/consulta.dto';
 import { ConsultaService } from 'src/app/services/consulta.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-dialog.component';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-consultas',
@@ -25,6 +26,7 @@ export class ConsultasComponent implements OnInit {
     private store: StoreService,
     private jwt: JwtService,
     private dialogService: DialogService,
+    private message: MessageService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -40,6 +42,11 @@ export class ConsultasComponent implements OnInit {
     dialogRef.onClose.subscribe((consulta: any)=>{
       if(consulta){
         this.setConsultas()
+        this.message.add({
+          severity:"success",
+          summary: "Consulta marcada",
+          detail: "Consulta marcada. Por favor, vá no dia e horário."
+        })
       }
     })
   }

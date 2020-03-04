@@ -7,6 +7,7 @@ import { MedicoService } from 'src/app/services/medico.service';
 import { AgendaService } from 'src/app/services/agenda.service';
 import { ConsultaService } from 'src/app/services/consulta.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ConfirmationService } from 'primeng/api';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class NewConsultaDialogComponent implements OnInit {
   agenda: AgendaDTO
 
   constructor(private ref: DynamicDialogRef,
+    private confirm: ConfirmationService
     private especilidadeService: EspecialidadeService,
     private medicoService: MedicoService,
     private agendaService: AgendaService,
@@ -64,9 +66,17 @@ export class NewConsultaDialogComponent implements OnInit {
 
   addConsulta() {
     let nova_consulta = { agenda: this.agenda.id }
-    this.consultaService.addConsulta(nova_consulta).subscribe(response => {
-      this.ref.close(response)
+    this.confirm.confirm({
+      message: `Você deseja confimar a consulta com ${this.medico.nome} para ${this.agenda.horario}?`,
+      accept: () => {
+        this.consultaService.addConsulta(nova_consulta).subscribe(response => {
+          this.ref.close(response)
+        })
+      }
     })
+    // this.consultaService.addConsulta(nova_consulta).subscribe(response => {
+    //   this.ref.close(response)
+    // })
   }
 
   closeConsulta() {
