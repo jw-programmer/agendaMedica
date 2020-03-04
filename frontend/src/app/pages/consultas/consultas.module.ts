@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import {DropdownModule} from 'primeng/dropdown';
-import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 import { ConsultasRoutingModule } from './consultas-routing.module';
 import { ConsultasComponent } from './consultas.component';
@@ -25,7 +25,7 @@ import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-d
     DropdownModule,
     DynamicDialogModule
   ],
-  entryComponents:[
+  entryComponents: [
     NewConsultaDialogComponent
   ]
 })

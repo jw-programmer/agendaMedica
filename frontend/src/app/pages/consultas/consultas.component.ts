@@ -6,7 +6,7 @@ import { JwtService } from 'src/app/services/jwt.service';
 import { Router } from '@angular/router';
 import { ConsultaDTO } from 'src/app/models/consulta.dto';
 import { ConsultaService } from 'src/app/services/consulta.service';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { NewConsultaDialogComponent } from './new-consulta-dialog/new-consulta-dialog.component';
 
 @Component({
@@ -36,6 +36,11 @@ export class ConsultasComponent implements OnInit {
     let dialogRef = this.dialogService.open(NewConsultaDialogComponent, {
       header: "Selecione as opções",
       width: '70%'
+    })
+    dialogRef.onClose.subscribe((consulta: any)=>{
+      if(consulta){
+        this.setConsultas()
+      }
     })
   }
 
