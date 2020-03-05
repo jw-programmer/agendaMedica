@@ -22,4 +22,8 @@ export class ConsultaService {
       responseType: 'text'
     })
   }
+
+  deleteConsulta(consulta_id: Number){
+    return this.http.delete(`${API_CONFIG.baseUrl}consultas/${consulta_id}/`)
+  }
 }

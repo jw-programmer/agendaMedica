@@ -32,6 +32,14 @@ export class JwtService {
     this.store.setLocalUser(user)
   }
 
+  refresh(refreshtoken: any) {
+    return this.http.post(`${API_CONFIG.baseUrl}token/refresh_token/`, { "refresh": `${refreshtoken}` },
+      {
+        observe: "response",
+        responseType: "json"
+      })
+  }
+
   logout() {
     this.store.setLocalUser(null)
   }

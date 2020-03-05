@@ -1,11 +1,13 @@
+<p-toast></p-toast>
+<p-confirmDialog header="Desmarcar consulta" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 <p-toolbar>
     <div class="ui-toolbar-group-left">
         <img src="/assets/logo.png" alt="logo do medicar" style="width: 50%; height: auto;">
     </div>
     <span class="ui-toolbar-group-right">
-        <label>
+        <h4>
             {{user.username}}
-        </label>
+        </h4>
         <button pButton class="ui-button-info" type="button" (click)="logout()" label="deslogar"></button>
     </span>
 </p-toolbar>
@@ -16,17 +18,21 @@
         </h2>
     </div>
     <div class="p-col-2">
-        <button pButton class="ui-button-info" icon="pi pi-plus" 
-        type="button" label="Nova consulta" (click)="openNewConsulta()"></button>
+        <button pButton class="ui-button-info" icon="pi pi-plus" type="button" label="Nova consulta"
+            (click)="openNewConsulta()"></button>
     </div>
 </div>
-<p-table [value]="consultas" [responsive]=true>
+<h3 *ngIf="consultas.length == 0">
+    Você não têm consultas marcadas
+</h3>
+<p-table [value]="consultas" [responsive]=true *ngIf="consultas.length > 0">
     <ng-template pTemplate="header">
         <tr>
             <th>Especialidade</th>
             <th>Médico</th>
             <th>Dia</th>
             <th>Hora</th>
+            <th>Desmarcar</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-consulta>
@@ -35,6 +41,9 @@
             <th>{{consulta.medico.nome}}</th>
             <th>{{consulta.dia}}</th>
             <th>{{consulta.horario}}</th>
+            <th>
+                <button pButton (click)="deleteConsulta(consulta)" icon="pi pi-check" class="ui-button-danger"></button>
+            </th>
         </tr>
     </ng-template>
 </p-table>

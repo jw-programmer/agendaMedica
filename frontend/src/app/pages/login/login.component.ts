@@ -23,6 +23,19 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    let localUser = this.store.getLocalUser()
+    if (localUser) {
+      this.jwtService.refresh(localUser['refresh']).subscribe(response => {
+        localUser.access = response.body['access']
+        this.store.setLocalUser(localUser)
+        this.router.navigate(['consulta'])
+      },
+        error => {
+          if(error.status == 403){
+            alert("OPERAÇÃO PROIBIDA")
+          }
+        })
+    }
   }
 
   cadrastrar(): void {
