@@ -5,9 +5,9 @@
         <img src="/assets/logo.png" alt="logo do medicar" style="width: 50%; height: auto;">
     </div>
     <span class="ui-toolbar-group-right">
-        <label>
+        <h4>
             {{user.username}}
-        </label>
+        </h4>
         <button pButton class="ui-button-info" type="button" (click)="logout()" label="deslogar"></button>
     </span>
 </p-toolbar>
@@ -22,7 +22,10 @@
             (click)="openNewConsulta()"></button>
     </div>
 </div>
-<p-table [value]="consultas" [responsive]=true>
+<h3 *ngIf="consultas.length == 0">
+    Você não têm consultas marcadas
+</h3>
+<p-table [value]="consultas" [responsive]=true *ngIf="consultas.length > 0">
     <ng-template pTemplate="header">
         <tr>
             <th>Especialidade</th>
