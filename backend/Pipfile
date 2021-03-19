@@ -10,7 +10,7 @@ ipdb = "*"
 pylint-django = "*"
 
 [packages]
-django = "==2.2.10"
+django = "==2.2.18"
 djangorestframework = "*"
 django-filter = "*"
 djangorestframework-simplejwt = "*"
